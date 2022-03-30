@@ -8,7 +8,7 @@ LIC_FILES_CHKSUM = "file://${WORKDIR}/git/LICENSE;md5=e368f0931469a726e1017aaa56
 
 SRC_URI = "gitsm://github.com/Accelize/drm.git;protocol=http;branch=master"
 SRCREV = "${AUTOREV}"
-PR = "r0"
+PV = "2.5.4"
 
 DEPENDS += " \
     curl \
