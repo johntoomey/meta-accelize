@@ -1,0 +1,20 @@
+{
+  "design": {
+    "boardType": "KV260-drmtest"
+  },
+  "licensing": {
+    "url": "https://master.metering.accelize.com",
+    "nodelocked": true,
+    "license_dir": "/usr/share" 
+  },
+  "drm": { 
+    "frequency_mhz": 100,
+    
+  }, 
+  "settings": {
+    "log_verbosity": 3,
+    "log_file_type": 1,
+    "log_file_verbosity": 1
+  }
+}
+
