@@ -8,7 +8,7 @@ Dependencies
 ============
 
 URI	git://github.com/ProvenRun/meta-provenrun
-branch: master
+branch: honister
 
 
 Patches
