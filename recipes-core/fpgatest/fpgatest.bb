@@ -7,19 +7,23 @@ SECTION = "PETALINUX/apps"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
+#FIXME why are these here? what are they doing?
 inherit fpgamanager_custom
 inherit update-alternatives
+
 FPGA_MNGR_RECONFIG_ENABLE = "1"
 
-SRC_URI = "file://kv260-aibox-reid.dtsi \
-           file://shell.json  \
-           file://system.bit \
-           file://fpgatest.xclbin \
-           "
+SRC_URI = " \
+    file://kv260-aibox-reid.dtsi \
+    file://shell.json  \
+    file://system.bit \
+    file://fpgatest.xclbin \
+    "
 
 S = "${WORKDIR}"
 
-do_install_append() {
+#FIXME - this only installs one files - others missing?
+do_install() {
 	install -d ${D}${sysconfdir}/dfx-mgrd
 	echo "${PN}" > ${D}${sysconfdir}/dfx-mgrd/${PN}
 }
@@ -30,8 +34,12 @@ FILES:${PN} += "${sysconfdir}/dfx-mgrd/${PN}"
 # is k26-kv. In order to add this package into the starter rootfs, the arch
 # is changed to k26 instead. Do this only for this package as kv260-dp will
 # be used as the default firmware to be loaded by dfx-mgrd during init.
-COMPATIBLE_MACHINE_k26 = "${MACHINE}"
-PACKAGE_ARCH = "${BOARD_ARCH}"
+
+COMPATIBLE_MACHINE = "^$"
+COMPATIBLE_MACHINE_k26 = ".*"
+
+#FIXME this breaks the build
+#PACKAGE_ARCH = "${BOARD_ARCH}"
 
 ALTERNATIVE:${PN} = "default_firmware"
 ALTERNATIVE_TARGET[default_firmware] = "${sysconfdir}/dfx-mgrd/${PN}"
